@@ -1,0 +1,36 @@
+﻿.card {
+    height: 100%;
+}
+
+    .card .card-img-top {
+        border-radius: 50%;
+        max-width: 50px;
+    }
+
+.card-title {
+    margin: 0;
+    padding-left: 10px;
+}
+
+.repo-stats {
+    font-size: 15px;
+    font-weight: lighter;
+    color: #565555;
+}
+
+.card-body {
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.card-actions {
+    position: absolute;
+    width: 90%;
+    bottom: 20px;
+}
+
+#deleteRepos {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+}
