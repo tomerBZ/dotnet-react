@@ -46,15 +46,21 @@
                 {this.state.bookmarks.length ? (
                     this.state.bookmarks.map((repo, key) => {
                         return (
-                            <div key={repo.id} className="col-xl-3 mb-3 mt-3">
+                            <div className="col-xl-3 mb-3 mt-3" key={repo.id}>
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="d-flex justify-content-start align-items-center">
+                                            <img className="card-img-top" src={repo.Owner.Avatar_url} />
                                             <h5 className="card-title">{repo.Name}</h5>
                                         </div>
+                                        <p className="card-text mt-3">Owner: {repo.Owner.Login}</p>
+                                        <p className="card-text mt-3">Description: {repo.Description}</p>
+                                        <p className="card-text">Languge: {repo.Language}</p>
                                         <div className="d-flex justify-content-between align-items-center card-actions">
                                             <div className="d-flex justify-content-between align-items-center repo-stats pl-0 col-6">
-                                                <span><i className="fas fa-star"></i><span className="pl-1">{repo.Forks}</span></span>
+                                                <span><i className="fas fa-star"></i><span className="pl-1">{repo.StargazersCount}</span></span>
+                                                <span><i className="fas fa-code-branch"></i><span className="pl-1">{repo.Forks}</span></span>
+                                                <span><i className="fas fa-eye"></i><span className="pl-1">{repo.Watchers}</span></span>
                                             </div>
                                             <button id={repo.id} onClick={this.bookmarkRepo} className="btn btn-raised btn-primary">Bookmark</button>
                                         </div>
