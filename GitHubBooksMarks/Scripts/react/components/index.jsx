@@ -2,7 +2,7 @@
 
     constructor(props) {
         super(props);
-        this.state = { searchTerm: '', repos: [] };
+        this.state = { searchTerm: '', repos: [], validationError: false };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.bookmarkRepo = this.bookmarkRepo.bind(this);
@@ -14,14 +14,19 @@
 
     handleSubmit(event) {
         event.preventDefault();
-        axios.get("https://api.github.com/search/repositories?q=" + this.state.searchTerm).then(response => {
-            this.setState({ repos: [] });
-            response.data.items.map((key, value) => {
-                const temp = this.state.repos.slice()
-                temp.push(key)
-                this.setState({ repos: temp });
+        if (this.state.searchTerm === "") {
+            this.setState({ validationError: true });
+        } else {
+            this.setState({ validationError: false });
+            axios.get("https://api.github.com/search/repositories?q=" + this.state.searchTerm).then(response => {
+                this.setState({ repos: [] });
+                response.data.items.map((key, value) => {
+                    const temp = this.state.repos.slice()
+                    temp.push(key)
+                    this.setState({ repos: temp });
+                });
             });
-        });
+        }
     }
 
     bookmarkRepo(event) {
@@ -49,6 +54,7 @@
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.value} onChange={this.handleChange} />
                             <button className="btn btn-outline-secondery my-2 my-sm-0" type="submit"><i className="material-icons">search</i></button>
                         </span>
+                        {this.state.validationError ? <span className="text-danger d-flex flex-column">Please Type in atleast 1 charecter</span> : ''}
                     </header>
                 </form>
                 <div className="row">
