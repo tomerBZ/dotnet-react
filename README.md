@@ -1,4 +1,6 @@
 # Github Repositories
+In order to run the project open the project as Visual Studio project and run it.
+
 
 ## Dependencies
 This project was created with the following technologies:
