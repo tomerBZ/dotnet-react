@@ -1,4 +1,4 @@
-# Github Repositories
+# Github Repositories API Search
 In order to run the project open the project as Visual Studio project and run it.
 
 
